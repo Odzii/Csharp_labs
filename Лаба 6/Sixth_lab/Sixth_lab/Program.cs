@@ -16,7 +16,7 @@ namespace Sixth_lab
             Console.WriteLine("Введите текст:");
             string input = Console.ReadLine();
 
-            string[] words = input.Split(new char[] { ' ', '\t' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] words = input.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
             Console.WriteLine("\nСлова в обратном порядке:");
             foreach (string word in words)
@@ -63,14 +63,31 @@ namespace Sixth_lab
              * Дан текст и строка s, Переписать в новый файл g все строки файла f, 
              * содержащие значения переменной s в качестве подстроки. 
              */
-            string row_1 = "Сегодня хорошая погода, светит солнце и дует лёгкий ветер. ";
-            string row_2 = "Многие люди вышли гулять в парк или поехать на дачу. ";
-            string row_3 = "Некоторые предпочитают остаться дома и читать интересную книгу. ";
-            string row_4 = "Вечером ожидается небольшой дождь, поэтому стоит взять зонт.";
-            Console.WriteLine(row_1 + row_2 + row_3 + row_4);
-            Console.WriteLine("Выберете подстроку из текста");
-            string substring = Console.ReadLine();
-
+            string str_1 = "Сегодня хорошая погода, светит солнце и дует лёгкий ветер. ";
+            string str_2 = "Многие люди вышли гулять в парк или поехать на дачу. ";
+            string str_3 = "Некоторые предпочитают остаться дома и читать интересную книгу. ";
+            string str_4 = "Вечером ожидается небольшой дождь, поэтому стоит взять зонт.";
+            string text = String.Concat(str_1, str_2, str_3, str_4);
+            Console.WriteLine(text);
+            Console.WriteLine("\nВыберете подстроку из текста");
+            string pattern = Console.ReadLine();
+            bool flag = Regex.IsMatch(text, pattern);
+            int count = 0;
+            if (flag == true)
+            {
+                MatchCollection coincidence = Regex.Matches(text, pattern);
+                foreach (Match p in coincidence)
+                {
+                    count++;
+                    Console.WriteLine(string.Concat($"{count}-е ", p.Value));
+                }      
+            }
+            else
+            {
+                Console.WriteLine("Подстрока не найдена");
+                return;
+            }
+            Console.WriteLine("Количество вхождений в строку {0}", count);
 
 
 
