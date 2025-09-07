@@ -11,9 +11,9 @@ namespace Seventh_labs
     {
         struct Date
         {
-            public int day { get; set; }
-            public int month { get; set; }
-            public int year { get; set; }
+            public int day;
+            public int month;
+            public int year;
 
             // Конструктор с параметрами
             public Date(int d, int m, int y)
@@ -106,6 +106,9 @@ namespace Seventh_labs
             int.TryParse(Console.ReadLine(), out int y);
             Date get_date = new Date(d, m, y);
             get_date.Print();
+            get_date.day = 1;
+            get_date.month = 2;
+            Console.WriteLine(get_date.month);
             }
 
     }
