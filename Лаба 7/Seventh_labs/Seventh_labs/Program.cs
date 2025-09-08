@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.IO;
 
 namespace Seventh_labs
 {
@@ -85,6 +85,25 @@ namespace Seventh_labs
                 
             }
         }
+
+        struct Marsh
+        {
+            public string start_busstop;
+            public string end_busstop;
+            public int number_bus;
+
+            public Marsh(string start, string end, int number)
+            {
+                start_busstop = start; 
+                end_busstop = end;
+                number_bus = number;
+            }
+            public string Print()
+            {
+                string write_marsh = "N№" + number_bus + " от " + start_busstop + " до " + end_busstop;
+                return write_marsh;
+            }
+        }
         static void Main(string[] args)
         {
             /*
@@ -98,18 +117,42 @@ namespace Seventh_labs
             Пользуясь таким структурным типом, составить программу, определяющую: 
             а) дату следующего (относительно сегодняшнего) дня,
              */
-            Console.Write("Введите день\n");
-            int.TryParse(Console.ReadLine(), out int d);
-            Console.Write("Введите месяц\n");
-            int.TryParse(Console.ReadLine(), out int m);
-            Console.Write("Введите год\n");
-            int.TryParse(Console.ReadLine(), out int y);
-            Date get_date = new Date(d, m, y);
-            get_date.Print();
-            get_date.day = 1;
-            get_date.month = 2;
-            Console.WriteLine(get_date.month);
-            }
+            //Console.Write("Введите день\n");
+            //int.TryParse(Console.ReadLine(), out int d);
+            //Console.Write("Введите месяц\n");
+            //int.TryParse(Console.ReadLine(), out int m);
+            //Console.Write("Введите год\n");
+            //int.TryParse(Console.ReadLine(), out int y);
+            //Date get_date = new Date(d, m, y);
+            //get_date.Print();
+            //get_date.day = 1;
+            //get_date.month = 2;
+            //Console.WriteLine(get_date.month);
 
+            //  Задание 2
+            int count = 0;
+            Marsh [] massiv = new Marsh[8];
+            while (count < 8)
+            {
+                string start_busstop = Console.ReadLine();
+                string end_busstop = Console.ReadLine();
+                int.TryParse(Console.ReadLine(), out int number_bus);
+                Marsh object_marsh = new Marsh(start_busstop, end_busstop, number_bus);
+                massiv[count] = object_marsh;
+                count++;
+            }
+            string path = "marsh.txt";
+            using (FileStream fs = File.Create(path));
+            {
+                Console.WriteLine("Файл создан");
+            }
+            foreach(Marsh value in massiv)
+            {
+                File.AppendAllText(path, $"{value.Print()}\n");
+            }
+            Console.WriteLine("Содержимое:");
+            Console.WriteLine(File.ReadAllText(path));
+
+        }
     }
 }
