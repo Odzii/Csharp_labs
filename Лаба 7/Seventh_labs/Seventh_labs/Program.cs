@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -184,6 +185,27 @@ namespace Seventh_labs
                 //string[] parts = { route, from, to };
                 //Console.WriteLine($"Маршрут: {parts[0]}, из: {parts[1]}, в: {parts[2]}");
             }
+            // Сортировка
+            for (int i = 0; i < len; i++)
+            {
+                int x = massiv[i].number_bus;
+                int j = i - 1;
+                while (j >= 0 && massiv[j].number_bus > x)
+                {
+                    massiv[j + 1] = massiv[j];
+                    j = j - 1;
+                }
+                massiv[j + 1] = massiv[i];
+            }
+            Console.WriteLine("Введите остановку:");
+            string busstop = Console.ReadLine();
+            for (int i = 0; i < len; i++)
+            {
+                if ((massiv[i].start_busstop.Equals(busstop)) | (massiv[i].end_busstop.Equals(busstop))){
+                    Console.WriteLine(massiv[i].Print());
+                }
+            }
+
         }
     }
 }
