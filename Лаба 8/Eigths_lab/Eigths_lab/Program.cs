@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 using System.Xml;
 using System.IO;
 using System.Xml.Serialization;
+using System.Text.Json;
 
 namespace Eigths_lab
 {
     public struct Marsh
     {
-        public string start_busstop;
-        public string end_busstop;
-        public int number_bus;
+        public string start_busstop { get; set; }
+        public string end_busstop { get; set; }
+        public int number_bus { get; set; }
 
         // конструктор для удобства
         public Marsh(string start, string end, int number)
@@ -52,6 +53,22 @@ namespace Eigths_lab
             var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
             return (T)serializer.Deserialize(fs);
         }
+
+        //////////////////////////
+        
+        static void SaveToJson<T>(T data, string path)
+        {
+            var options = new JsonSerializerOptions { WriteIndented = true }; // красивое форматирование
+            string json = JsonSerializer.Serialize(data, options);
+            File.WriteAllText(path, json);
+        }
+
+        static T LoadFromJson<T>(string path)
+        {
+            string json = File.ReadAllText(path);
+            return JsonSerializer.Deserialize<T>(json);
+        }
+
         static void Main(string[] args)
         {
             int len = 3;
@@ -87,6 +104,19 @@ namespace Eigths_lab
             foreach (var marsh in sorted)
                 Console.WriteLine(marsh.Print());
             Console.ReadLine();
+
+            string jsonPath = "routes.json";
+
+            // запись
+            SaveToJson(massiv, jsonPath);
+            Console.WriteLine("JSON сохранён.");
+
+            // чтение
+            Marsh[] json_loaded = LoadFromJson<Marsh[]>(jsonPath);
+            Console.WriteLine("Считано из JSON:");
+
+            foreach (var marsh in json_loaded)
+                Console.WriteLine(marsh.Print());
         }
     }
 }
