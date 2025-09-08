@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using System.IO;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace Seventh_labs
 {
@@ -130,9 +132,10 @@ namespace Seventh_labs
             //Console.WriteLine(get_date.month);
 
             //  Задание 2
+            int len = 3;
             int count = 0;
-            Marsh [] massiv = new Marsh[8];
-            while (count < 8)
+            Marsh [] massiv = new Marsh[len];
+            while (count < len)
             {
                 string start_busstop = Console.ReadLine();
                 string end_busstop = Console.ReadLine();
@@ -146,13 +149,41 @@ namespace Seventh_labs
             {
                 Console.WriteLine("Файл создан");
             }
+            bool flag = true;
             foreach(Marsh value in massiv)
             {
-                File.AppendAllText(path, $"{value.Print()}\n");
+                if (flag == true)
+                { 
+                    File.AppendAllText(path, $"{value.Print()}");
+                    flag = false;
+                }
+                else
+                    File.AppendAllText(path, $"\n{value.Print()}");
             }
             Console.WriteLine("Содержимое:");
-            Console.WriteLine(File.ReadAllText(path));
+            string text = File.ReadAllText(path);
+            Console.WriteLine(text);
 
+            string[] strings = text.Split(new char[] { '\n' });
+            var pattern = @"^N№\s*(?<route>\d+)\s+от\s+(?<from>.+?)\s+до\s+(?<to>.+)$";
+            var rx = new Regex(pattern, RegexOptions.IgnoreCase | RegexOptions.CultureInvariant);
+            
+            count = 0;
+            foreach (string value in strings)
+            {
+                var match = rx.Match(value);
+                //Console.WriteLine(value);
+                
+                string from = match.Groups["from"].Value.Trim();
+                string to = match.Groups["to"].Value.Trim();
+                string route = match.Groups["route"].Value.Trim();
+                Marsh object_marsh = new Marsh(from, to, int.Parse(route));
+                massiv[count] = object_marsh;
+                //Console.WriteLine(massiv[count].Print());
+                count++;
+                //string[] parts = { route, from, to };
+                //Console.WriteLine($"Маршрут: {parts[0]}, из: {parts[1]}, в: {parts[2]}");
+            }
         }
     }
 }
