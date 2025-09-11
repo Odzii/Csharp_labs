@@ -5,6 +5,12 @@ namespace SecondLaba
 {
     class Program
     {
+        static void PrintErrorInt(string error)
+        {
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(error);
+            Console.ResetColor();
+        }
         //  Данная функция вычисляет объём параллелепипеда по трем введенным переменным а, b, c
         static void TaskOne()
         {
@@ -19,9 +25,7 @@ namespace SecondLaba
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Ошибка: нужно целое число <a>.");
-                    Console.ResetColor();
+                    PrintErrorInt("Ошибка: нужно целое число <a>.");
                 }
             }
 
@@ -34,9 +38,7 @@ namespace SecondLaba
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Ошибка: нужно целое число <b>.");
-                    Console.ResetColor();
+                    PrintErrorInt("Ошибка: нужно целое число <b>.");
                 }
             }
 
@@ -49,9 +51,7 @@ namespace SecondLaba
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("Ошибка: нужно целое число <c>.");
-                    Console.ResetColor();
+                    PrintErrorInt("Ошибка: нужно целое число <с>.");
                 }
             }
 
@@ -163,9 +163,7 @@ namespace SecondLaba
                             }
                             else
                             {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("Ошибка: нужно целое число <a>.");                                
-                                Console.ResetColor();
+                                PrintErrorInt("Ошибка: нужно целое число <a>.");
                             }
                         }
 
@@ -184,7 +182,7 @@ namespace SecondLaba
                         BigInteger a_32 = a_16 * a_16;
                         BigInteger a_40 = a_32 * a_8;
                         BigInteger resultValue_2_44 = a_40 * a_4;
-                        Console.WriteLine($"a^44: вариант1={resultValue_1_44}, \nвариант2={resultValue_2_44}\n");
+                        Console.WriteLine($"Результаты расчета a^44:\nвариант 1 = {resultValue_1_44};\nвариант 2 = {resultValue_2_44}.\n");
                         break;
 
                     case 3:
@@ -197,9 +195,7 @@ namespace SecondLaba
                             }
                             else
                             {
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.WriteLine("Ошибка: нужно целое число <a>.");                                
-                                Console.ResetColor();
+                                PrintErrorInt("Ошибка: нужно целое число <a>.");
                             }
                         }
 
@@ -218,7 +214,7 @@ namespace SecondLaba
                         BigInteger x_18 = x_12 * x_6;
                         BigInteger x_36 = x_18 * x_18;
                         BigInteger resultValue_38 = x_36 * x_2;
-                        Console.WriteLine($"a^12 за 4 операции: {resultValue_12}; \na^38 за 7 операций: {resultValue_38}\n");
+                        Console.WriteLine($"Результат расчета a^12\nЗа 4 операции: {resultValue_12};\na^38 за 7 операций: {resultValue_38}.\n");
                         break;
 
                     case 4:

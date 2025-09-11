@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ThirdLaba
 {
     class Program
-    {
+    {   //  Данная функция закрашивает сообщения в случае неверного ввода значения типа int
         static void PrintErrorInt(string error)
         {
             Console.ForegroundColor = ConsoleColor.Red;
@@ -17,7 +12,7 @@ namespace ThirdLaba
         }
         static void Main(string[] args)
         {
-            int counter;  //  Переменная счетчик.
+            long counter;  //  Переменная счетчик.
             while (true)
             {
                 Console.WriteLine(
@@ -28,15 +23,15 @@ namespace ThirdLaba
                 {
                     Console.BackgroundColor = ConsoleColor.Red;
                     Console.ForegroundColor = ConsoleColor.Black;
-                    Console.WriteLine("Ошибка: введите номер 1 до 6 и нажмите Enter");
+                    Console.WriteLine("Ошибка: введите номер 1 до 4 и нажмите Enter");
                     Console.ResetColor();
                     continue; // снова показать меню
                 }
 
                 switch (valueCase)
                 {
-                    case 1:
-                        int R;
+                    case 1:  //  Количество точек в круге радиусом R
+                        long R;
                         counter = 0;
 
                         while (true)
@@ -45,16 +40,16 @@ namespace ThirdLaba
                                 "Введите радиус круга, " +
                                 "чтобы вычислить К-точек с целочисленными координатами" +
                                 " попадающих в круг радиуса R с центром в начале координат.\n" + "R: ");
-                            if (int.TryParse(Console.ReadLine(), out R) && R > 0)
+                            if (long.TryParse(Console.ReadLine(), out R) && R > 0)
                                 break;
                             else
                                 PrintErrorInt("Ошибка: необходимо целое положительное число.");
 
                         }
 
-                        for (int x = -R; x <= R; x++)
+                        for (long x = -R; x <= R; x++)
                         {
-                            for (int y = -R; y <= R; y++)
+                            for (long y = -R; y <= R; y++)
                             {
                                 if (Math.Pow(x, 2) + Math.Pow(y, 2) <= Math.Pow(R, 2))
                                 {
@@ -62,30 +57,33 @@ namespace ThirdLaba
                                 }
                             }
                         }
-                        Console.WriteLine($"Количество точек: {counter}");
+                        Console.WriteLine($"Количество точек: {counter}\n");
                         break;
 
-                    case 2:
-                        int counter_inter;
+                    case 2:  //  Расчет числовой последовательности
+                        int counterIter;
                         counter = 0;
+                        double eps = 1e-4;
 
                         while (true)
                         {
                             Console.WriteLine("Введите максимальное число итераций:");
-                            if (int.TryParse(Console.ReadLine(), out counter_inter) && counter_inter > 0)
+                            if (int.TryParse(Console.ReadLine(), out counterIter) && counterIter > 0)
                                 break;
                             else
                                 PrintErrorInt("Ошибка: необходимо целое положительное число.");
                         }
 
-                        double a = 10;
-                        while (a < Math.Pow(10, -4) || counter <= counter_inter)
+                        double a = 10.0;
+                        while (eps < Math.Abs(1-a) && counter < counterIter)
                         {
-                            //a = 0.5f * (a + 1f / a);
-                            a = 0.5 * (a + (1 / a));
+                            a = 0.5 * (a + (1.0 / a));
                             counter++;
                         }
-                        Console.WriteLine($"Число итераций {counter-1}\nРезультат вычисления {a}");
+                        Console.WriteLine($"Число итераций {counter}\nРезультат вычисления {a}");
+                        Console.WriteLine($"Достигнутая точность {Math.Abs(1 - a)}\n");
+                        if (Math.Abs(1.0 - a) > eps)
+                            Console.WriteLine("Внимание: точность не достигнута — исчерпан лимит итераций.\n");
                         break;
 
                     case 3:
