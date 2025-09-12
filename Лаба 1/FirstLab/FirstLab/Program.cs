@@ -10,8 +10,8 @@ namespace FirstLab
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
             Console.WriteLine("Здравствуй, Мир!");
+            Console.WriteLine("Создал ветку GitTest");
             Console.ReadLine(); 
         }
     }
