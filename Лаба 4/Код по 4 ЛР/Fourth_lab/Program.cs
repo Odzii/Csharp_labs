@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace FourthLab
 {
@@ -83,10 +85,12 @@ namespace FourthLab
         {
             Random rnd = new Random();
             int[,] matrix;
+            int min;
+            int index;
 
             while (true)
             {
-                Console.WriteLine("1. Одномерный массив расчет" +
+                Console.WriteLine("\n1. Одномерный массив расчет" +
                     "элементов имеющих четные порядковые"
                     + "номера и являющихся нечетными числами.\n"
                     + "2. Поиск лучшего спортсмена по пятиборью.\n"
@@ -137,8 +141,8 @@ namespace FourthLab
 
                         matrix = new int[5, 5];
                         int[] array_sum = new int[5];
-                        int min = 1000;
-                        int index = 0;
+                        min = 1000;
+                        index = 0;
                         for (int i = 0; i < matrix.GetLength(0); i++)  //  строки
                         {
                             int sum = 0;
@@ -162,10 +166,75 @@ namespace FourthLab
                         break;
 
                     case 3:
+                        counter = 0;
                         matrix = CreateMatrix();
-                        foreach (int i in ma)
+                        int len = matrix.GetLength(0) * matrix.GetLength(1);
+                        int[] vector = new int[len];
+                        //  Перевод двумерного массива в одномерный
+                        if (matrix.GetLength(0) >= 1)
+                        {
+                            foreach (int i in matrix)
                             {
+                                vector[counter] = i;
+                                if (counter == 0)
+                                {
 
+                                    Console.Write("[" + vector[counter] + ", ");
+                                    counter++;
+                                    continue;
+                                }
+                                else if (counter == len - 1)
+                                {
+                                    Console.Write(vector[counter] + "]\n");
+                                    break;
+                                }
+                                else
+                                {
+                                    Console.Write(vector[counter] + ", ");
+                                    counter++;
+                                }
+                            }
+
+                            //Console.WriteLine("\n" + counter);
+                        }
+                        index = 0;
+                        for (int i = 0; i < len - 1; i++)
+                        {
+                            min = vector[i];
+                            index = i;
+                            for (int j = (i + 1); j < len; j++)
+                            {
+                                if (min > vector[j])
+                                {
+                                    min = vector[j];
+                                    index = j;
+                                }
+                                else
+                                    continue;
+                            }
+                            vector[index] = vector[i];
+                            vector[i] = min;
+                        }
+                        foreach (int i in vector)
+                        {
+                            Console.Write(i + " ");
+                        }
+                        Console.WriteLine();
+
+                        counter = 1;
+                        int copyValue;
+                        int maxIter = ((len - len / 2) / 2) + len / 2;
+                        for (int i = len/2; i < maxIter; i++)
+                        {
+                                copyValue = vector[i];
+                                vector[i] = vector[len-counter];
+                                vector[len - counter] = copyValue;
+                                counter++;
+                        }
+                            Console.WriteLine();
+                        foreach (int i in vector)
+                        {
+                            Console.Write(i + " ");
                         }
 
                         break;
