@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Numerics;  //  Для использования BiInteger
+using System.Numerics;  //  Для использования BigInteger
 
 namespace SecondLaba
 {
@@ -25,7 +25,7 @@ namespace SecondLaba
                 }
                 else
                 {
-                    PrintErrorInt("Ошибка: нужно целое число <a>.");
+                    PrintErrorInt("Ошибка: нужно целое положительное число <a>.");
                 }
             }
 
@@ -38,7 +38,7 @@ namespace SecondLaba
                 }
                 else
                 {
-                    PrintErrorInt("Ошибка: нужно целое число <b>.");
+                    PrintErrorInt("Ошибка: нужно целое положительное число <b>.");
                 }
             }
 
@@ -51,11 +51,11 @@ namespace SecondLaba
                 }
                 else
                 {
-                    PrintErrorInt("Ошибка: нужно целое число <с>.");
+                    PrintErrorInt("Ошибка: нужно целое положительное число <с>.");
                 }
             }
 
-            int resultVolume = a * b * c;  //  Объем параллелепипеда
+            long resultVolume = (long)a * b * c;  //  Объем параллелепипеда
             Console.WriteLine($"Объем равен: {resultVolume}\n");
 
         }
@@ -77,48 +77,48 @@ namespace SecondLaba
 
             if (alpha_1 == 0)
             {
-                Console.WriteLine($"Угол между прямыми (x1;y1),(x2;y2),(y5;x5) равен 90 градусам");
+                Console.WriteLine($"Угол между прямыми (x1;y1),(x2;y2),(x5;y5) равен 90 градусам");
                 countAngleNinty++;
             }
             else
-                Console.WriteLine($"Угол между прямыми (x1;y1),(x2;y2),(y5;x5) не равен 90 градусам");
+                Console.WriteLine($"Угол между прямыми (x1;y1),(x2;y2),(x5;y5) не равен 90 градусам");
 
             if (alpha_2 == 0)
             {
-                Console.WriteLine($"Угол между прямыми (x1;y1),(x2;y2),(y3;x3) равен 90 градусам");
-                countAngleNinty++;
-            }                
-            else
-                Console.WriteLine($"Угол между прямыми (x1;y1),(x2;y2),(y3;x3) не равен 90 градусам");
-
-            if (alpha_3 == 0)
-            {
-                Console.WriteLine($"Угол между прямыми (x2;y2),(x3;y3),(y4;x4) равен 90 градусам");
-                countAngleNinty++;
-            }                
-            else
-                Console.WriteLine($"Угол между прямыми (x2;y2),(x3;y3),(y4;x4) не равен 90 градусам");
-
-            if (alpha_4 == 0)
-            {
-                Console.WriteLine($"Угол между прямыми (x3;y3),(x4;y4),(y5;x5) равен 90 градусам");
-                countAngleNinty++;
-            }                
-            else
-                Console.WriteLine($"Угол между прямыми (x3;y3),(x4;y4),(y5;x5) не равен 90 градусам");
-
-            if (alpha_5 == 0)
-            {
-                Console.WriteLine($"Угол между прямыми (x1;y1),(x4;y4),(y5;x5) равен 90 градусам");
+                Console.WriteLine($"Угол между прямыми (x1;y1),(x2;y2),(x3;y3) равен 90 градусам");
                 countAngleNinty++;
             }
             else
-                Console.WriteLine($"Угол между прямыми (x1;y1),(x4;y4),(y5;x5) не равен 90 градусам");
+                Console.WriteLine($"Угол между прямыми (x1;y1),(x2;y2),(x3;y3) не равен 90 градусам");
+
+            if (alpha_3 == 0)
+            {
+                Console.WriteLine($"Угол между прямыми (x2;y2),(x3;y3),(x4;y4) равен 90 градусам");
+                countAngleNinty++;
+            }
+            else
+                Console.WriteLine($"Угол между прямыми (x2;y2),(x3;y3),(x4;y4) не равен 90 градусам");
+
+            if (alpha_4 == 0)
+            {
+                Console.WriteLine($"Угол между прямыми (x3;y3),(x4;y4),(x5;y5) равен 90 градусам");
+                countAngleNinty++;
+            }
+            else
+                Console.WriteLine($"Угол между прямыми (x3;y3),(x4;y4),(x5;y5) не равен 90 градусам");
+
+            if (alpha_5 == 0)
+            {
+                Console.WriteLine($"Угол между прямыми (x1;y1),(x4;y4),(x5;y5) равен 90 градусам");
+                countAngleNinty++;
+            }
+            else
+                Console.WriteLine($"Угол между прямыми (x1;y1),(x4;y4),(x5;y5) не равен 90 градусам");
 
             if (countAngleNinty != 0)
                 Console.WriteLine($"Всего углов равных 90 градусам: {countAngleNinty}\n");
             else
-                Console.WriteLine("В данном пятиугольнике нет прямых углов\n");     
+                Console.WriteLine("В данном пятиугольнике нет прямых углов\n");
         }
 
         static void Main(string[] args)
@@ -130,10 +130,10 @@ namespace SecondLaba
                 Console.WriteLine
                     (
                     "1. Программа для вычисления объема прямоугольного параллелепипеда\n" +
-                    "2. Получить a^44 за 6 операций\n" +
-                    "3. Получить a^12 и a^38 за 6 операций\n" +
+                    "2. Получить a^44 за 7 операций\n" +
+                    "3. Получить a^12 и a^38 за 7 операций\n" +
                     "4. Пятиугольник: количество прямых углов\n" +
-                    "5. Выход\n" + "6. Очистить консоль"
+                    "5. Очистить консоль\n" + "6.Выход"
                     );
 
                 // Данное условие выполняет проверку ввода пользотелем.
@@ -153,7 +153,7 @@ namespace SecondLaba
                         TaskOne();
                         break;
 
-                    case 2:                        
+                    case 2:
                         Console.Write("Введите переменную <a> = ");
                         while (true)
                         {
@@ -169,19 +169,19 @@ namespace SecondLaba
 
                         //  Способ №1
 
-                        BigInteger a_2 = a * a;
-                        BigInteger a_4 = a_2 * a_2;
-                        BigInteger a_8 = a_4 * a_4;
-                        BigInteger a_16 = a_8 * a_8;
-                        BigInteger a_20 = a_16 * a_4;
-                        BigInteger a_22 = a_20 * a_2;
-                        BigInteger resultValue_1_44 = a_22 * a_22;
+                        BigInteger a_2 = a * a;                         //  1
+                        BigInteger a_4 = a_2 * a_2;                     //  2
+                        BigInteger a_8 = a_4 * a_4;                     //  3
+                        BigInteger a_16 = a_8 * a_8;                    //  4
+                        BigInteger a_20 = a_16 * a_4;                   //  5
+                        BigInteger a_22 = a_20 * a_2;                   //  6
+                        BigInteger resultValue_1_44 = a_22 * a_22;      //  7
 
                         //  Способ №2
 
-                        BigInteger a_32 = a_16 * a_16;
-                        BigInteger a_40 = a_32 * a_8;
-                        BigInteger resultValue_2_44 = a_40 * a_4;
+                        BigInteger a_32 = a_16 * a_16;                  //  5
+                        BigInteger a_40 = a_32 * a_8;                   //  6
+                        BigInteger resultValue_2_44 = a_40 * a_4;       //  7
                         Console.WriteLine($"Результаты расчета a^44:\nвариант 1 = {resultValue_1_44};\nвариант 2 = {resultValue_2_44}.\n");
                         break;
 
@@ -201,20 +201,20 @@ namespace SecondLaba
 
                         //  Способ №1
 
-                        BigInteger x_2 = x * x;
-                        BigInteger x_4 = x_2 * x_2;
-                        BigInteger x_8 = x_4 * x_4;
-                        BigInteger resultValue_12 = x_8 * x_4;
+                        BigInteger x_2 = x * x;                         //  1
+                        BigInteger x_4 = x_2 * x_2;                     //  2
+                        BigInteger x_8 = x_4 * x_4;                     //  3
+                        BigInteger resultValue_12 = x_8 * x_4;          //  4    
 
                         //  Способ №2
 
-                        BigInteger x_3 = x_2 * x;
-                        BigInteger x_6 = x_3 * x_3;
-                        BigInteger x_12 = x_6 * x_6;
-                        BigInteger x_18 = x_12 * x_6;
-                        BigInteger x_36 = x_18 * x_18;
-                        BigInteger resultValue_38 = x_36 * x_2;
-                        Console.WriteLine($"Результат расчета a^12\nЗа 4 операции: {resultValue_12};\na^38 за 7 операций: {resultValue_38}.\n");
+                        BigInteger x_3 = x_2 * x;                       //  1
+                        BigInteger x_6 = x_3 * x_3;                     //  2
+                        BigInteger x_12 = x_6 * x_6;                    //  3
+                        BigInteger x_18 = x_12 * x_6;                   //  4
+                        BigInteger x_36 = x_18 * x_18;                  //  5
+                        BigInteger resultValue_38 = x_36 * x_2;         //  6
+                        Console.WriteLine($"Результат расчета a^12\nЗа 4 операции: {resultValue_12};\na^38 за 6 операций: {resultValue_38}.\n");
                         break;
 
                     case 4:
@@ -223,18 +223,19 @@ namespace SecondLaba
                         Console.WriteLine("2-й пятиугольник");
                         TaskFour(0, 0, 2, 1, 5, 1, 5, 4, 1, 3);
                         Console.WriteLine("3-й пятиугольник");
-                        TaskFour(-3, -1, -1, 2, 2, 3, 2, -1, -2, -1);
+                        TaskFour(-3, 0, -1, 2, 2, 3, 2, -1, -2, -1);
                         Console.WriteLine("4-й пятиугольник");
                         TaskFour(0, 0, 1, 1, 3, 0, 4, 2, 1, -2);
                         break;
 
                     case 5:
+                        Console.Clear();
+                        break;
+
+                    case 6:
                         Console.WriteLine("Выход из программы.");
                         return; // завершаем Main
 
-                    case 6:
-                        Console.Clear();
-                        break;
                 }
             }
         }

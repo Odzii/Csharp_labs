@@ -75,7 +75,7 @@ namespace ThirdLaba
                         }
 
                         double a = 10.0;
-                        while (eps < Math.Abs(1-a) && counter < counterIter)
+                        while (eps < Math.Abs(1 - a) && counter < counterIter)
                         {
                             a = 0.5 * (a + (1.0 / a));
                             counter++;
@@ -96,11 +96,6 @@ namespace ThirdLaba
 
                 }
             }
-
-
-
-
-            
         }
     }
 }
