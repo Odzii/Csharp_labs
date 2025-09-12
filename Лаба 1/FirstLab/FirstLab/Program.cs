@@ -10,7 +10,8 @@ namespace FirstLab
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            string test = Console.ReadLine();
+            Console.WriteLine(test);
             Console.WriteLine("Здравствуй, Мир!");
             Console.ReadLine(); 
         }
