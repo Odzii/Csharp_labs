@@ -13,7 +13,7 @@ namespace FourthLab
 
 
         //  Метод позволяет создать массив размером [row, col] целочисленного типа.
-        static Array CreateMatrix()
+        static int[,] CreateMatrix()
         {
             Random rnd = new Random();
             int col, row;
@@ -22,13 +22,13 @@ namespace FourthLab
             {
                 //  Ввод и проверка корректности                
                 Console.Write("Введите число столбцов массива:");
-                if (!int.TryParse(Console.ReadLine(), out col))
+                if (!int.TryParse(Console.ReadLine(), out col) && col > 0)
                 {
                     Console.WriteLine("Введите целое положительное число");
                     continue;
                 }
                 Console.Write("Введите число строк массива:");
-                if (!int.TryParse(Console.ReadLine(), out row))
+                if (!int.TryParse(Console.ReadLine(), out row) && row > 0)
                 {
                     Console.WriteLine("Введите целое положительное число");
                     continue;
@@ -36,7 +36,6 @@ namespace FourthLab
                 matrix = new int[row, col];
                 for (int i = 0; i < matrix.GetLength(0); i++)  //  строки
                 {
-                    int sum = 0;
                     for (int j = 0; j < matrix.GetLength(1); j++)  //  столбцы
                     {
                         int rnd_value = rnd.Next(1, 6);
@@ -45,11 +44,10 @@ namespace FourthLab
                     }
                     Console.WriteLine();
                 }
-                Console.WriteLine("Массив размером [{0}, {1}] создан", row, col);
+                Console.WriteLine("Массив размером [{0}, {1}] создан\n", row, col);
                 break;
             }
             return matrix;
-
         }
 
 
@@ -84,6 +82,8 @@ namespace FourthLab
         static void Main(string[] args)
         {
             Random rnd = new Random();
+            int[,] matrix;
+
             while (true)
             {
                 Console.WriteLine("1. Одномерный массив расчет" +
@@ -135,7 +135,7 @@ namespace FourthLab
 
                         //  Задание по поиску лучшего спортсмена по пятиборью
 
-                        int[,] matrix = new int[5, 5];
+                        matrix = new int[5, 5];
                         int[] array_sum = new int[5];
                         int min = 1000;
                         int index = 0;
@@ -160,8 +160,14 @@ namespace FourthLab
                         Console.WriteLine("Выиграл спортсмен под номером {0} с суммой очков {1}", index + 1, min);
                         Console.ReadLine();
                         break;
+
                     case 3:
-                        //  Здесь будет допметод легче №3
+                        matrix = CreateMatrix();
+                        foreach (int i in ma)
+                            {
+
+                        }
+
                         break;
 
                     case 4:
