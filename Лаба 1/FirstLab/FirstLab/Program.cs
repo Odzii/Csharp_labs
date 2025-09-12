@@ -13,6 +13,7 @@ namespace FirstLab
             string test = Console.ReadLine();
             Console.WriteLine(test);
             Console.WriteLine("Здравствуй, Мир!");
+            Console.WriteLine("Создал ветку GitTest");
             Console.ReadLine(); 
         }
     }
