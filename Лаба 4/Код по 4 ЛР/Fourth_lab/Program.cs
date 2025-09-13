@@ -168,8 +168,9 @@ namespace FourthLab
                     case 3:
                         counter = 0;
                         matrix = CreateMatrix();
-                        int len = matrix.GetLength(0) * matrix.GetLength(1);
+                        int len = matrix.GetLength(0) * matrix.GetLength(1);  //  Получаем длину вектора
                         int[] vector = new int[len];
+
                         //  Перевод двумерного массива в одномерный
                         if (matrix.GetLength(0) >= 1)
                         {
@@ -198,22 +199,26 @@ namespace FourthLab
                             //Console.WriteLine("\n" + counter);
                         }
                         index = 0;
-                        for (int i = 0; i < len - 1; i++)
+                        int extreme;
+                        for (int i = 0; i < len-1; i++)
                         {
-                            min = vector[i];
+                            extreme = vector[i];
                             index = i;
                             for (int j = (i + 1); j < len; j++)
                             {
-                                if (min > vector[j])
+                                if (extreme > vector[j] && i <= (len / 2) - 1)
                                 {
-                                    min = vector[j];
+                                    extreme = vector[j];
                                     index = j;
                                 }
-                                else
-                                    continue;
+                                else if ((extreme < vector[j] && i > (len / 2) - 1))
+                                {
+                                    extreme = vector[j];
+                                    index = j;
+                                }
                             }
                             vector[index] = vector[i];
-                            vector[i] = min;
+                            vector[i] = extreme;
                         }
                         foreach (int i in vector)
                         {
@@ -221,21 +226,21 @@ namespace FourthLab
                         }
                         Console.WriteLine();
 
-                        counter = 1;
-                        int copyValue;
-                        int maxIter = ((len - len / 2) / 2) + len / 2;
-                        for (int i = len/2; i < maxIter; i++)
-                        {
-                                copyValue = vector[i];
-                                vector[i] = vector[len-counter];
-                                vector[len - counter] = copyValue;
-                                counter++;
-                        }
-                            Console.WriteLine();
-                        foreach (int i in vector)
-                        {
-                            Console.Write(i + " ");
-                        }
+                        //counter = 1;
+                        //int copyValue;
+                        //int maxIter = ((len - len / 2) / 2) + len / 2;
+                        //for (int i = len/2; i < maxIter; i++)
+                        //{
+                        //        copyValue = vector[i];
+                        //        vector[i] = vector[len-counter];
+                        //        vector[len - counter] = copyValue;
+                        //        counter++;
+                        //}
+                        //    Console.WriteLine();
+                        //foreach (int i in vector)
+                        //{
+                        //    Console.Write(i + " ");
+                        //}
 
                         break;
 
