@@ -334,7 +334,7 @@ namespace FourthLab
 
                         vector = new int[] { 3, 7, 8, 5, 2, 1, 9, 5, 4};
                         Pivot(vector, 0, 8);
-                        //vector = new int[] { 3, 7, 8, 5, 2, 1, 9, 5, 4 };
+                        vector = new int[] { 3, 7, 8, 5, 2, 1, 9, 5, 4 };
                         //len = vector.Length - 1;
                         //int pivot = vector[vector.Length - 1];
 
