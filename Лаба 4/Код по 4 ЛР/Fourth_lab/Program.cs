@@ -334,48 +334,48 @@ namespace FourthLab
 
                         vector = new int[] { 3, 7, 8, 5, 2, 1, 9, 5, 4};
                         Pivot(vector, 0, 8);
-                        vector = new int[] { 3, 7, 8, 5, 2, 1, 9, 5, 4 };
-                        len = vector.Length - 1;
-                        int pivot = vector[vector.Length - 1];
+                        //vector = new int[] { 3, 7, 8, 5, 2, 1, 9, 5, 4 };
+                        //len = vector.Length - 1;
+                        //int pivot = vector[vector.Length - 1];
 
-                        int indexPivot = 1;
-                        int indexStart = 0;
-                        int indexEnd = 0;
-                        while (indexStart <= len + 1 - indexPivot)
-                        {
-                            //  Перестановка элементов массива
-                            if (vector[indexStart] > pivot)
-                            {                               
-                                if (len - indexPivot - indexStart == 0)
-                                {
-                                    var temp = vector[indexStart];
-                                    vector[len - indexPivot] = pivot;
-                                    vector[len - indexEnd] = temp;
-                                    indexPivot++;
-                                }
-                                else
-                                {
-                                    var temp = vector[len - indexPivot];  // Перед опорным запоминаем
-                                    vector[len - indexPivot] = pivot;  // Опорный двигаем вперед
-                                    vector[len - indexEnd] = vector[indexStart];  // В конец вставляем тот что больше
-                                    vector[indexStart] = temp;  // Тот что перед опорным был меняем для проверки
-                                    indexPivot++;
-                                    indexEnd++;
-                                }      
-                            }                            
-                            else
-                            {
-                                indexStart++;
-                            }
-                        }
+                        //int indexPivot = 1;
+                        //int indexStart = 0;
+                        //int indexEnd = 0;
+                        //while (indexStart <= len + 1 - indexPivot)
+                        //{
+                        //    //  Перестановка элементов массива
+                        //    if (vector[indexStart] > pivot)
+                        //    {                               
+                        //        if (len - indexPivot - indexStart == 0)
+                        //        {
+                        //            var temp = vector[indexStart];
+                        //            vector[len - indexPivot] = pivot;
+                        //            vector[len - indexEnd] = temp;
+                        //            indexPivot++;
+                        //        }
+                        //        else
+                        //        {
+                        //            var temp = vector[len - indexPivot];  // Перед опорным запоминаем
+                        //            vector[len - indexPivot] = pivot;  // Опорный двигаем вперед
+                        //            vector[len - indexEnd] = vector[indexStart];  // В конец вставляем тот что больше
+                        //            vector[indexStart] = temp;  // Тот что перед опорным был меняем для проверки
+                        //            indexPivot++;
+                        //            indexEnd++;
+                        //        }      
+                        //    }                            
+                        //    else
+                        //    {
+                        //        indexStart++;
+                        //    }
+                        //}
 
 
-                        Console.WriteLine();
-                        foreach (var item in vector)
-                        {
-                            Console.Write(item.ToString() + "\t");
-                        }
-                        Console.WriteLine();
+                        //Console.WriteLine();
+                        //foreach (var item in vector)
+                        //{
+                        //    Console.Write(item.ToString() + "\t");
+                        //}
+                        //Console.WriteLine();
 
                         
                         //for (int i = 0; i < len; i++)
