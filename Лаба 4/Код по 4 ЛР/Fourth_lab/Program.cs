@@ -81,6 +81,86 @@ namespace FourthLab
             return value;   //  Возврат значения введеного пользователем.
         }
 
+        //  Данная функция выполняет конвертацию 2D массива в 1D
+        static int[] MatrixToVector(int[,] matrix)
+        {
+            int counter = 0;
+            int len = matrix.GetLength(0) * matrix.GetLength(1);  //  Получаем длину вектора
+            int[] vector = new int[len];
+            if (matrix.GetLength(0) >= 1)
+            {
+                foreach (int i in matrix)
+                {
+                    vector[counter] = i;
+                    if (counter == 0)
+                    {
+
+                        Console.Write("[" + vector[counter] + ", ");
+                        counter++;
+                        continue;
+                    }
+                    else if (counter == len - 1)
+                    {
+                        Console.Write(vector[counter] + "]\n");
+                        break;
+                    }
+                    else
+                    {
+                        Console.Write(vector[counter] + ", ");
+                        counter++;
+                    }
+                }
+            }
+            return vector;
+        }
+        //static int Pivot(int start, int end, int[] array)
+        //{
+
+        static int Pivot(int[] vector, int indexStart, int indexEnd)
+        {
+            int countEnd = 0;
+            int countPivot = 1;
+            int pivot = vector[indexEnd];
+            while (indexStart <= indexEnd + 1 - countPivot)
+            {
+                //  Перестановка элементов массива
+                if (vector[indexStart] > pivot)
+                {
+                    if (indexEnd - countPivot - indexStart == 0)
+                    {
+                        var temp = vector[indexStart];
+                        vector[indexEnd - countPivot] = pivot;
+                        vector[indexEnd - countEnd] = temp;
+                        countPivot++;
+                    }
+                    else
+                    {
+                        var temp = vector[indexEnd - countPivot];  // Перед опорным запоминаем
+                        vector[indexEnd - countPivot] = pivot;  // Опорный двигаем вперед
+                        vector[indexEnd - countEnd] = vector[indexStart];  // В конец вставляем тот что больше
+                        vector[indexStart] = temp;  // Тот что перед опорным был меняем для проверки
+                        countPivot++;
+                        countEnd++;
+                    }
+                }
+                else
+                {
+                    indexStart++;
+                }
+            }
+            Console.WriteLine();
+            foreach (var item in vector)
+            {
+                Console.Write(item.ToString() + "\t");
+            }
+            Console.WriteLine();
+
+            return countPivot;
+        }
+
+        //    return index;
+        //}
+
         static void Main(string[] args)
         {
             Random rnd = new Random();
@@ -200,7 +280,7 @@ namespace FourthLab
                         }
                         index = 0;
                         int extreme;
-                        for (int i = 0; i < len-1; i++)
+                        for (int i = 0; i < len - 1; i++)
                         {
                             extreme = vector[i];
                             index = i;
@@ -246,6 +326,78 @@ namespace FourthLab
 
                     case 4:
                         //  Здесь будет допметод сложнее №4
+
+                        //matrix = CreateMatrix();
+                        //len = matrix.GetLength(0) * matrix.GetLength(1);  //  Получаем длину вектора
+                        //vector = new int[len];
+                        //vector = MatrixToVector(matrix);
+
+                        vector = new int[] { 3, 7, 8, 5, 2, 1, 9, 5, 4};
+                        Pivot(vector, 0, 8);
+                        vector = new int[] { 3, 7, 8, 5, 2, 1, 9, 5, 4 };
+                        len = vector.Length - 1;
+                        int pivot = vector[vector.Length - 1];
+
+                        int indexPivot = 1;
+                        int indexStart = 0;
+                        int indexEnd = 0;
+                        while (indexStart <= len + 1 - indexPivot)
+                        {
+                            //  Перестановка элементов массива
+                            if (vector[indexStart] > pivot)
+                            {                               
+                                if (len - indexPivot - indexStart == 0)
+                                {
+                                    var temp = vector[indexStart];
+                                    vector[len - indexPivot] = pivot;
+                                    vector[len - indexEnd] = temp;
+                                    indexPivot++;
+                                }
+                                else
+                                {
+                                    var temp = vector[len - indexPivot];  // Перед опорным запоминаем
+                                    vector[len - indexPivot] = pivot;  // Опорный двигаем вперед
+                                    vector[len - indexEnd] = vector[indexStart];  // В конец вставляем тот что больше
+                                    vector[indexStart] = temp;  // Тот что перед опорным был меняем для проверки
+                                    indexPivot++;
+                                    indexEnd++;
+                                }      
+                            }                            
+                            else
+                            {
+                                indexStart++;
+                            }
+                        }
+
+
+                        Console.WriteLine();
+                        foreach (var item in vector)
+                        {
+                            Console.Write(item.ToString() + "\t");
+                        }
+                        Console.WriteLine();
+
+                        
+                        //for (int i = 0; i < len; i++)
+                        //{
+                        //    counter = counter * 2;
+                        //    if (supportElement - 1 > -1 && supportElement - 1 < len)
+                        //    {
+                        //        vec_rigth = new int[supportElement - 1];
+                        //        vec_left = new int[supportElement + 1];
+                        //    }
+                        //    else
+                        //    {
+                        //        vec_rigth = new int[len / counter - 1];
+                        //        vec_left = new int[len/ counter - 1];
+                        //    }
+
+
+
+
+
+
+                        //}
                         break;
 
                     case 5:
