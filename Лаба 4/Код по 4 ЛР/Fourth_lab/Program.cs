@@ -116,12 +116,34 @@ namespace FourthLab
         //static int Pivot(int start, int end, int[] array)
         //{
 
-        static int Pivot(int[] vector, int indexStart, int indexEnd)
+        static void Pivot(int[] vector, int indexStart, int indexEnd, int COUNT)
         {
+            int START = indexStart;
+            Console.WriteLine("start="+ START);
+            Console.WriteLine("indexStart=" + indexStart);
+            //if (indexStart == 0)
+            //    Console.WriteLine("Start 0");
+            //else
+            //    Console.WriteLine("Start!=0{0}", indexStart);
+
+            if (indexEnd != indexStart)
+            {
+                for (int i = indexStart; i <= indexEnd; i++)
+                {
+                    Console.Write(vector[i].ToString() + "\t");
+                }
+                Console.WriteLine();
+            }
+            
             int countEnd = 0;
             int countPivot = 1;
             int pivot = vector[indexEnd];
-            while (indexStart <= indexEnd + 1 - countPivot)
+            if (indexStart == indexEnd)
+            {
+                return;
+            }
+
+            while (indexStart < indexEnd + 1 - countPivot)
             {
                 //  Перестановка элементов массива
                 if (vector[indexStart] > pivot)
@@ -148,14 +170,23 @@ namespace FourthLab
                     indexStart++;
                 }
             }
-            Console.WriteLine();
-            foreach (var item in vector)
-            {
-                Console.Write(item.ToString() + "\t");
-            }
-            Console.WriteLine();
 
-            return countPivot;
+            Console.WriteLine();
+            //foreach (var item in vector)
+            //{
+            //    Console.Write(item.ToString() + "\t");
+            //}
+            //Console.WriteLine();
+            //for (int i = indexStart; i < indexEnd; i++)
+            //{
+            //    Console.Write(vector[i].ToString() + "\t");
+            //}
+            //Console.WriteLine();
+
+            Pivot(vector, START, indexEnd - countPivot, COUNT+1);
+            Pivot(vector, indexEnd - countPivot + 1, indexEnd, COUNT + 2);
+
+
         }
 
         //    return index;
@@ -333,9 +364,9 @@ namespace FourthLab
                         //vector = MatrixToVector(matrix);
 
                         vector = new int[] { 3, 7, 8, 5, 2, 1, 9, 5, 4};
-                        Pivot(vector, 0, 8);
+                        Pivot(vector, 0, 8, 1);
                         //vector = new int[] { 3, 7, 8, 5, 2, 1, 9, 5, 4 };
-                       // len = vector.Length - 1;
+                        // len = vector.Length - 1;
                         //int pivot = vector[vector.Length - 1];
 
                         //int indexPivot = 1;
@@ -371,13 +402,13 @@ namespace FourthLab
 
 
                         //Console.WriteLine();
-                        //foreach (var item in vector)
-                        //{
-                        //    Console.Write(item.ToString() + "\t");
-                        //}
-                        //Console.WriteLine();
+                        foreach (var item in vector)
+                        {
+                            Console.Write(item.ToString() + "\t");
+                        }
+                        Console.WriteLine();
 
-                        
+
                         //for (int i = 0; i < len; i++)
                         //{
                         //    counter = counter * 2;
