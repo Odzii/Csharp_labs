@@ -131,8 +131,8 @@ namespace Fifth_laba
         static void Main(string[] args)
         {
             while (true)
-            {                
-                Console.WriteLine("1. Возведение в степень;" + "\n2. Дополнительное задание;" 
+            {
+                Console.WriteLine("1. Возведение в степень;" + "\n2. Дополнительное задание;"
                     + "\n3. Очистить консоль; " + "\n4. Выход.");
 
                 int valueCase = ReadInteger("Выберите вариант из списка. ");
@@ -146,6 +146,7 @@ namespace Fifth_laba
                         int n = ReadInteger("Введите степень N: ");
                         Console.WriteLine($"{x}^{n} = {Power(x, n)}");
                         break;
+
                     case 2:
                         //  Задание №2
                         int[,] matrix = CreateMatrix();
@@ -155,13 +156,15 @@ namespace Fifth_laba
                         double result = RecSum(vector, 1);
                         Console.WriteLine("Сумма = " + result);
                         break;
+
                     case 3:
                         Console.Clear();
                         break;
+
                     case 4:
                         return;
                 }
-            }        
+            }
         }
     }
 }
