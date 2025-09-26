@@ -340,28 +340,6 @@ namespace FourthLab
                             Console.Write(item.ToString() + "\t");
                         }
                         Console.WriteLine();
-
-
-                        //for (int i = 0; i < len; i++)
-                        //{
-                        //    counter = counter * 2;
-                        //    if (supportElement - 1 > -1 && supportElement - 1 < len)
-                        //    {
-                        //        vec_rigth = new int[supportElement - 1];
-                        //        vec_left = new int[supportElement + 1];
-                        //    }
-                        //    else
-                        //    {
-                        //        vec_rigth = new int[len / counter - 1];
-                        //        vec_left = new int[len/ counter - 1];
-                        //    }
-
-
-
-
-
-
-                        //}
                         break;
 
                     case 5:
