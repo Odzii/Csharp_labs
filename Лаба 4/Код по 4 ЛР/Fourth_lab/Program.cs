@@ -13,7 +13,6 @@ namespace FourthLab
     internal class Program
     {
 
-
         //  Метод позволяет создать массив размером [row, col] целочисленного типа.
         static int[,] CreateMatrix()
         {
@@ -52,7 +51,6 @@ namespace FourthLab
             return matrix;
         }
 
-
         //  Вывод и подсвечивание текста при ошибочном вводе пользователя.
         static void PrintErrorInt()
         {
@@ -61,7 +59,6 @@ namespace FourthLab
             Console.WriteLine("Введите целое число");
             Console.ResetColor();
         }
-
 
         //  Данная функция принимает на вход (текст ввода, текст при ошибки ввода).
         //  Возвращает вводимое пользователем число.
@@ -113,18 +110,11 @@ namespace FourthLab
             }
             return vector;
         }
-        //static int Pivot(int start, int end, int[] array)
-        //{
 
-        static void Pivot(int[] vector, int indexStart, int indexEnd, int COUNT)
+        //  Алгоритм быстрой сортировки, когда опорный элемент в конце
+        static void Pivot(int[] vector, int indexStart, int indexEnd)
         {
-            int START = indexStart;
-            Console.WriteLine("start="+ START);
-            Console.WriteLine("indexStart=" + indexStart);
-            //if (indexStart == 0)
-            //    Console.WriteLine("Start 0");
-            //else
-            //    Console.WriteLine("Start!=0{0}", indexStart);
+            int start = indexStart;
 
             if (indexEnd != indexStart)
             {
@@ -134,7 +124,7 @@ namespace FourthLab
                 }
                 Console.WriteLine();
             }
-            
+
             int countEnd = 0;
             int countPivot = 1;
             int pivot = vector[indexEnd];
@@ -148,6 +138,8 @@ namespace FourthLab
                 //  Перестановка элементов массива
                 if (vector[indexStart] > pivot)
                 {
+                    //  Перестановка двух элементов, когда
+                    // pivot и сравниваемый элемент соседи
                     if (indexEnd - countPivot - indexStart == 0)
                     {
                         var temp = vector[indexStart];
@@ -157,10 +149,10 @@ namespace FourthLab
                     }
                     else
                     {
-                        var temp = vector[indexEnd - countPivot];  // Перед опорным запоминаем
-                        vector[indexEnd - countPivot] = pivot;  // Опорный двигаем вперед
-                        vector[indexEnd - countEnd] = vector[indexStart];  // В конец вставляем тот что больше
-                        vector[indexStart] = temp;  // Тот что перед опорным был меняем для проверки
+                        var temp = vector[indexEnd - countPivot];
+                        vector[indexEnd - countPivot] = pivot;
+                        vector[indexEnd - countEnd] = vector[indexStart];
+                        vector[indexStart] = temp;
                         countPivot++;
                         countEnd++;
                     }
@@ -172,29 +164,29 @@ namespace FourthLab
             }
 
             Console.WriteLine();
-            //foreach (var item in vector)
-            //{
-            //    Console.Write(item.ToString() + "\t");
-            //}
-            //Console.WriteLine();
-            //for (int i = indexStart; i < indexEnd; i++)
-            //{
-            //    Console.Write(vector[i].ToString() + "\t");
-            //}
-            //Console.WriteLine();
 
-            Pivot(vector, START, indexEnd - countPivot, COUNT+1);
-            Pivot(vector, indexEnd - countPivot + 1, indexEnd, COUNT + 2);
-
-
+            Pivot(vector, start, indexEnd - countPivot);
+            Pivot(vector, indexEnd - countPivot + 1, indexEnd);
         }
 
-        //    return index;
-        //}
+        // Ввод и вывод ошибки при вводе неверного типа при целочисленном значении
+        static int IntegerMessage(string text)
+        {
+            int digit;
+            Console.Write("\n" + text);
+            while (!int.TryParse(Console.ReadLine(), out digit))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Ошибка: введите целое число!");
+                Console.ResetColor();
+                Console.Write(text + " "); // повторяем подсказку
+            }
+            return digit;
+        }
 
         static void Main(string[] args)
         {
-            Random rnd = new Random();
+            Random rnd = new Random();  // Создаем объект Random
             int[,] matrix;
             int min;
             int index;
@@ -223,14 +215,11 @@ namespace FourthLab
 
                         /*  В данном блоке происходит расчет количества элементов
                          *  имеющих четные порядковые номера и 
-                         *  являющиеся нечетными числами
+                         *  являющихся нечетными числами
                          */
 
-                        Console.Write("Введите значение n ");
-                        int.TryParse(Console.ReadLine(), out int length);
+                        int length = IntegerMessage("Введите размер массива: ");
                         int[] array = new int[length];
-
-                        //  Random rnd = new Random();
                         int counter = 0;
 
                         for (int i = 0; i < array.Length; i++)
@@ -249,15 +238,16 @@ namespace FourthLab
                     case 2:
 
                         //  Задание по поиску лучшего спортсмена по пятиборью
-
+                        //  Участвует 5 спорстменов в пяти различных соревнованиях
                         matrix = new int[5, 5];
-                        int[] array_sum = new int[5];
-                        min = 1000;
+                        min = 30;
                         index = 0;
-                        for (int i = 0; i < matrix.GetLength(0); i++)  //  строки
+                        //  строки i = номер спортсмена
+                        for (int i = 0; i < matrix.GetLength(0); i++)  
                         {
                             int sum = 0;
-                            for (int j = 0; j < matrix.GetLength(1); j++)  //  столбцы
+                            //  столбцы j = места в соревнования для i-го спортсмена
+                            for (int j = 0; j < matrix.GetLength(1); j++)  
                             {
                                 int rnd_value = rnd.Next(1, 6);
                                 matrix[i, j] = rnd_value;
@@ -265,6 +255,7 @@ namespace FourthLab
                                 Console.Write(matrix[i, j] + "\t");
 
                             }
+                            //  Поиск по минимуму и выполнение перестановок
                             if (sum < min)
                             {
                                 min = sum;
@@ -277,45 +268,21 @@ namespace FourthLab
                         break;
 
                     case 3:
-                        counter = 0;
+                        /* Рассматривается метод доп№1: 
+                         * Метод простых вставок. 
+                         * До середины - по возрастанию, после – по убыванию
+                         */
+
                         matrix = CreateMatrix();
-                        int len = matrix.GetLength(0) * matrix.GetLength(1);  //  Получаем длину вектора
-                        int[] vector = new int[len];
-
-                        //  Перевод двумерного массива в одномерный
-                        if (matrix.GetLength(0) >= 1)
-                        {
-                            foreach (int i in matrix)
-                            {
-                                vector[counter] = i;
-                                if (counter == 0)
-                                {
-
-                                    Console.Write("[" + vector[counter] + ", ");
-                                    counter++;
-                                    continue;
-                                }
-                                else if (counter == len - 1)
-                                {
-                                    Console.Write(vector[counter] + "]\n");
-                                    break;
-                                }
-                                else
-                                {
-                                    Console.Write(vector[counter] + ", ");
-                                    counter++;
-                                }
-                            }
-
-                            //Console.WriteLine("\n" + counter);
-                        }
+                        int[] vector = MatrixToVector(matrix);
+                        int len = matrix.GetLength(0) * matrix.GetLength(1);  //  Получаем длину вектора                        
                         index = 0;
                         int extreme;
                         for (int i = 0; i < len - 1; i++)
                         {
                             extreme = vector[i];
                             index = i;
-                            for (int j = (i + 1); j < len; j++)
+                            for (int j = (i + 1); j < len; j++)  // Смотрим следующий элемент массива и сравниваем с i-м
                             {
                                 if (extreme > vector[j] && i <= (len / 2) - 1)
                                 {
@@ -331,12 +298,14 @@ namespace FourthLab
                             vector[index] = vector[i];
                             vector[i] = extreme;
                         }
+                        // Вывод 1D массива после сортировки
                         foreach (int i in vector)
                         {
                             Console.Write(i + " ");
                         }
                         Console.WriteLine();
 
+                        // Старая сортировка отражением половины
                         //counter = 1;
                         //int copyValue;
                         //int maxIter = ((len - len / 2) / 2) + len / 2;
@@ -352,56 +321,20 @@ namespace FourthLab
                         //{
                         //    Console.Write(i + " ");
                         //}
-
                         break;
 
                     case 4:
-                        //  Здесь будет допметод сложнее №4
+                        //  Доп№2: Быстрая сортировка
 
                         //matrix = CreateMatrix();
                         //len = matrix.GetLength(0) * matrix.GetLength(1);  //  Получаем длину вектора
                         //vector = new int[len];
                         //vector = MatrixToVector(matrix);
 
-                        vector = new int[] { 3, 7, 8, 5, 2, 1, 9, 5, 4};
-                        Pivot(vector, 0, 8, 1);
-                        //vector = new int[] { 3, 7, 8, 5, 2, 1, 9, 5, 4 };
-                        // len = vector.Length - 1;
-                        //int pivot = vector[vector.Length - 1];
-
-                        //int indexPivot = 1;
-                        //int indexStart = 0;
-                        //int indexEnd = 0;
-                        //while (indexStart <= len + 1 - indexPivot)
-                        //{
-                        //    //  Перестановка элементов массива
-                        //    if (vector[indexStart] > pivot)
-                        //    {                               
-                        //        if (len - indexPivot - indexStart == 0)
-                        //        {
-                        //            var temp = vector[indexStart];
-                        //            vector[len - indexPivot] = pivot;
-                        //            vector[len - indexEnd] = temp;
-                        //            indexPivot++;
-                        //        }
-                        //        else
-                        //        {
-                        //            var temp = vector[len - indexPivot];  // Перед опорным запоминаем
-                        //            vector[len - indexPivot] = pivot;  // Опорный двигаем вперед
-                        //            vector[len - indexEnd] = vector[indexStart];  // В конец вставляем тот что больше
-                        //            vector[indexStart] = temp;  // Тот что перед опорным был меняем для проверки
-                        //            indexPivot++;
-                        //            indexEnd++;
-                        //        }      
-                        //    }                            
-                        //    else
-                        //    {
-                        //        indexStart++;
-                        //    }
-                        //}
-
-
-                        //Console.WriteLine();
+                        vector = new int[] { 3, 7, 8, 5, 2, 1, 9, 5, 4 };
+                        Pivot(vector, 0, 8);
+                        
+                        // Вывод массива после сортировки
                         foreach (var item in vector)
                         {
                             Console.Write(item.ToString() + "\t");
