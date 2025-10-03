@@ -79,6 +79,8 @@ namespace Fifth_laba
             }
             return vector;
         }
+
+        //  Вычисление степени рекурсивно
         static double RecPower(double x, int n)
         {
             //Console.WriteLine(x);
@@ -91,6 +93,7 @@ namespace Fifth_laba
             return x * RecPower(x, n - 1); // рекурсивный шаг
         }
 
+        //  Рекурсивное вычисление суммы по формуле в задании 10
         static double RecSum(int[] array, int i)
         {
             if (i >= array.Length) // база рекурсии
