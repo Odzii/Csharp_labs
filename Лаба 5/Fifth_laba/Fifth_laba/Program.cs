@@ -79,21 +79,23 @@ namespace Fifth_laba
             }
             return vector;
         }
-        static double Power(double x, int n)
+        static double RecPower(double x, int n)
         {
-            if (n == 0)
+            //Console.WriteLine(x);
+            if (n == 0) // любое число в нулевой степени = 1
                 return 1;
-            else if (n < 0)
-                return 1 / Math.Pow(x, -n);
-            else
-                return x * Math.Pow(x, n - 1);
+
+            if (n < 0)  // отрицательная степень
+                return 1 / RecPower(x, -n);
+
+            return x * RecPower(x, n - 1); // рекурсивный шаг
         }
 
         static double RecSum(int[] array, int i)
         {
             if (i >= array.Length) // база рекурсии
                 return 0;
-
+            // Необходимо чтобы в массиве не было 0 и 1, так как будет бесконечность.
             double term = 1.0 / ((array[i] - 1) * array[i] * (array[i] + 1));
             return term + RecSum(array, i + 1); // шаг рекурсии
         }
@@ -144,7 +146,7 @@ namespace Fifth_laba
                     case 1:
                         double x = ReadDouble("Введите число Х ");
                         int n = ReadInteger("Введите степень N: ");
-                        Console.WriteLine($"{x}^{n} = {Power(x, n)}");
+                        Console.WriteLine($"{x}^{n} = {RecPower(x, n)}");
                         break;
 
                     case 2:

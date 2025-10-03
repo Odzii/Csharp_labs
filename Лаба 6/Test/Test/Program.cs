@@ -17,11 +17,21 @@ class Program
         Console.WriteLine(text);
 
         Console.WriteLine("\n10-e");
+        // IPv4 с точками
+        foreach (Match m in Regex.Matches(text, @"\b((0\.){3}(0)\b")) // IPv4 0.0.0.0
+        {
+            Console.WriteLine(m.Value);
+        }
+        // IPv4 начания с 1.xxx.xxx.xxx
         foreach (Match m in Regex.Matches(text, @"\b((25[0-5]|2[0-4]\d|1\d{2}|[1-9]\d?)\.)((25[0-5]|2[0-4]\d|1\d{2}|[0-9]\d?)\.){2}((25[0-5]|2[0-4]\d|1\d{2}|[0-9]\d?))\b")) //  10-я система
         {
              Console.WriteLine(m.Value);
         }
-
+        // IPv4 без точек
+        foreach (Match m in Regex.Matches(text, @"\b")) //  10-я система
+        {
+            Console.WriteLine(m.Value);
+        }
         Console.WriteLine("\n8-e");
         foreach (Match m in Regex.Matches(text, @"\b((37[0-7]|3[0-6][0-7]|2[0-7]{2}|1[0-7]{2}|[0-7]{2}[1-7])\.)((37[0-7]|3[0-6][0-7]|2[0-7]{2}|1[0-7]{2}|[0-7]{2}[0-7])\.){2}((37[0-7]|3[0-6][0-7]|2[0-7]{2}|1[0-7]{2}|[0-7]{3}))\b")) // 8-я система
         {
