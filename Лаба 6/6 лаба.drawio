@@ -244,8 +244,8 @@
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="450" y="1030" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="620" y="650" />
-              <mxPoint x="620" y="980" />
+              <mxPoint x="670" y="650" />
+              <mxPoint x="670" y="980" />
               <mxPoint x="450" y="980" />
             </Array>
           </mxGeometry>
@@ -261,6 +261,14 @@
         </mxCell>
         <mxCell id="8heaPdWIyd-7Ec6Da3x7-20" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8heaPdWIyd-7Ec6Da3x7-18" target="8heaPdWIyd-7Ec6Da3x7-19">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="XLvvbcUgkhQumLnlOL0g-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="8heaPdWIyd-7Ec6Da3x7-18" target="8heaPdWIyd-7Ec6Da3x7-23">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="630" y="770" />
+              <mxPoint x="630" y="935" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <mxCell id="8heaPdWIyd-7Ec6Da3x7-18" value="if (в text[count] есть pattern)" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="330" y="730" width="240" height="80" as="geometry" />
@@ -284,6 +292,12 @@
         </mxCell>
         <mxCell id="8heaPdWIyd-7Ec6Da3x7-27" value="Конец" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="400" y="1030" width="100" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="XLvvbcUgkhQumLnlOL0g-2" value="&lt;font style=&quot;color: rgb(255, 6, 6);&quot;&gt;Нет&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="570" y="740" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="XLvvbcUgkhQumLnlOL0g-3" value="&lt;font color=&quot;#ff0606&quot;&gt;Да&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="450" y="810" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -321,14 +335,6 @@
         </mxCell>
         <mxCell id="3YYLBU4TakaYKq5mbTj5-7" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="3YYLBU4TakaYKq5mbTj5-5" target="3YYLBU4TakaYKq5mbTj5-2">
           <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="3YYLBU4TakaYKq5mbTj5-40" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="3YYLBU4TakaYKq5mbTj5-5" target="3YYLBU4TakaYKq5mbTj5-23">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="630" y="180" />
-              <mxPoint x="630" y="1220" />
-            </Array>
-          </mxGeometry>
         </mxCell>
         <mxCell id="3YYLBU4TakaYKq5mbTj5-5" value="while (true)" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="320" y="140" width="220" height="80" as="geometry" />
@@ -460,6 +466,21 @@
         </mxCell>
         <mxCell id="3YYLBU4TakaYKq5mbTj5-29" value="Очистка консоли" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="190" y="920" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="lTNoBT5z8kAQlG6ISgmT-1" value="&lt;font style=&quot;color: rgb(255, 6, 6);&quot;&gt;Да&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="430" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lTNoBT5z8kAQlG6ISgmT-2" value="&lt;font style=&quot;color: rgb(255, 6, 6);&quot;&gt;Да&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="555" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lTNoBT5z8kAQlG6ISgmT-3" value="&lt;font style=&quot;color: rgb(255, 6, 6);&quot;&gt;Да&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="680" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lTNoBT5z8kAQlG6ISgmT-4" value="&lt;font style=&quot;color: rgb(255, 6, 6);&quot;&gt;Да&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="310" y="920" width="60" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lTNoBT5z8kAQlG6ISgmT-5" value="&lt;font style=&quot;color: rgb(255, 6, 6);&quot;&gt;Да&lt;/font&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="430" y="220" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>

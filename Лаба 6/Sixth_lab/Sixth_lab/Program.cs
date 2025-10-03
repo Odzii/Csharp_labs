@@ -77,7 +77,10 @@ namespace Sixth_lab
                         Console.ResetColor();
                         input = Console.ReadLine();
 
-                        string[] words = input.Split(new char[] { ' ', ',', '!', '?', ';', ':' }, StringSplitOptions.RemoveEmptyEntries);
+                        string[] words = input.Split(
+                                new char[] { ' ', ',', '!', '?', ';', ':' },
+                                StringSplitOptions.RemoveEmptyEntries
+                                );
                         Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("\nСлова в обратном порядке:");
                         Console.ResetColor();
@@ -208,20 +211,7 @@ namespace Sixth_lab
                     case 6:
                         return;
                 }
-            }
-
-
-
-
-
-
-
-
-
-
-            
+            }   
         }
-
-
     }
 }
