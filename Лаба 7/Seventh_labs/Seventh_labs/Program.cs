@@ -76,6 +76,7 @@ namespace Seventh_labs
 
                 if (month == 2)
                 {
+                    // Проверка, если год високосный
                     if ((year % 4 == 0 & year % 100 != 0) || (year % 400 == 0))
                     {
                         Nextday(29);
@@ -86,7 +87,8 @@ namespace Seventh_labs
                     }
                 }
                 else
-                    Nextday(month_dict[month]);
+                    if ()
+                        Nextday(month_dict[month]);
 
 
             }
@@ -166,11 +168,11 @@ namespace Seventh_labs
                         а) дату следующего (относительно сегодняшнего) дня,
                          */
                         
-                        Console.Write("Введите день\n");
+                        Console.Write("Введите день");
                         int.TryParse(Console.ReadLine(), out int d);
-                        Console.Write("Введите месяц\n");
+                        Console.Write("\nВведите месяц");
                         int.TryParse(Console.ReadLine(), out int m);
-                        Console.Write("Введите год\n");
+                        Console.Write("\nВведите год");
                         int.TryParse(Console.ReadLine(), out int y);
                         Date get_date = new Date(d, m, y);
                         get_date.Print();
