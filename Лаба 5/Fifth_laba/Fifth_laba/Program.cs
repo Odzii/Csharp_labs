@@ -10,7 +10,7 @@ namespace Fifth_laba
     class Program
     {
         //  Метод позволяет создать массив размером [row, col] целочисленного типа.
-        static int[,] CreateMatrix()
+        static int[,] CreateMatrix(int startDigit, int endDigit)
         {
             Random rnd = new Random();
             int col, row;
@@ -35,7 +35,7 @@ namespace Fifth_laba
                 {
                     for (int j = 0; j < matrix.GetLength(1); j++)  //  столбцы
                     {
-                        int rnd_value = rnd.Next(2, 10);
+                        int rnd_value = rnd.Next(startDigit, endDigit);
                         matrix[i, j] = rnd_value;
                         Console.Write(matrix[i, j] + "\t");
                     }
@@ -83,7 +83,7 @@ namespace Fifth_laba
         //  Вычисление степени рекурсивно
         static double RecPower(double x, int n)
         {
-            //Console.WriteLine(x);
+            Console.WriteLine($"N = {n}");
             if (n == 0) // любое число в нулевой степени = 1
                 return 1;
 
@@ -154,7 +154,7 @@ namespace Fifth_laba
 
                     case 2:
                         //  Задание №2
-                        int[,] matrix = CreateMatrix();
+                        int[,] matrix = CreateMatrix(2, 10);
                         int[] vector = MatrixToVector(matrix);
                         int[] a = { 2, 3, 4, 5, 6 };
                         // начиная с i=2 (по условию), а в C# это индекс 1

@@ -264,7 +264,7 @@ namespace FourthLab
                             Console.WriteLine();
                         }
                         Console.WriteLine("Выиграл спортсмен под номером {0} с суммой очков {1}", index + 1, min);
-                        Console.ReadLine();
+                        //Console.ReadLine();
                         break;
 
                     case 3:
@@ -305,7 +305,7 @@ namespace FourthLab
                         }
                         Console.WriteLine();
 
-                        // Старая сортировка отражением половины
+                        // Старая сортировка отражением половины с использованием симметрии
                         //counter = 1;
                         //int copyValue;
                         //int maxIter = ((len - len / 2) / 2) + len / 2;
