@@ -8,115 +8,198 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Text.Json;
 
-namespace Eigths_lab
+namespace EigthsLab
 {
-    public struct Marsh
-    {
-        public string start_busstop { get; set; }
-        public string end_busstop { get; set; }
-        public int number_bus { get; set; }
-
-        // конструктор для удобства
-        public Marsh(string start, string end, int number)
-        {
-            start_busstop = start;
-            end_busstop = end;
-            number_bus = number;
-        }
-        public string Print() 
-        { 
-            string write_marsh = "N№" + number_bus + " от " + start_busstop + " до " + end_busstop; 
-            return write_marsh; 
-        }
-    }
-
+    //  Инициализация сериализации
     [XmlRoot("Routes")]
     public struct MarshArray
     {
         [XmlElement("Route")]
-        public Marsh[] Items;
+        public List<Marsh> Items;
     }
+
+
     internal class Program
     {
-        
+       
+        // Внизу будут описаны методы для работы с XML и Json
+        // Метод для сохранения XML
         static void SaveToXml<T>(T data, string path)
         {
-            var serializer = new XmlSerializer(typeof(T));
-            var fs = new FileStream(path, FileMode.Create, FileAccess.Write);
-            serializer.Serialize(fs, data);
-            fs.Close();
-        }
+            try
+            {
+                var s = new XmlSerializer(typeof(T));
+                using (var fs = new FileStream(path, FileMode.Create, FileAccess.Write))
+                    s.Serialize(fs, data);
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.Write("XML сохранён: ");
+                Console.ResetColor();
+                Console.WriteLine($"{Path.GetFullPath(path)}");
 
+                //fs.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Ошибка сохранения XML" + ex.Message);
+                Console.ResetColor();
+            }
+        }
+        
+        // Метод для загрузки XML
         static T LoadFromXml<T>(string path)
         {
-            var serializer = new XmlSerializer(typeof(T));
-            var fs = new FileStream(path, FileMode.Open, FileAccess.Read);
-            return (T)serializer.Deserialize(fs);
+            
+            var s = new XmlSerializer(typeof(T));
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.Write("XML загружен: ");
+            Console.ResetColor();
+            Console.WriteLine($"{Path.GetFullPath(path)}");
+            using (var fs = new FileStream(path, FileMode.Open, FileAccess.Read))
+                return (T)s.Deserialize(fs);
+            
         }
 
-        //////////////////////////
-        
+        // Метод для сохранения Json        
         static void SaveToJson<T>(T data, string path)
         {
-            var options = new JsonSerializerOptions { WriteIndented = true }; // красивое форматирование
-            string json = JsonSerializer.Serialize(data, options);
-            File.WriteAllText(path, json);
+            try
+            {
+                var options = new JsonSerializerOptions { WriteIndented = true }; // красивое форматирование
+                string json = JsonSerializer.Serialize(data, options);
+                File.WriteAllText(path, json);
+                Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                Console.Write("Json сохранён: ");
+                Console.ResetColor();
+                Console.WriteLine($"{Path.GetFullPath(path)}");
+                Console.ResetColor();
+            }
+            catch (Exception ex)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Ошибка сохранения Json" + ex.Message);
+                Console.ResetColor();
+            }
+            
         }
 
+        // Метод для загрузки Json   
         static T LoadFromJson<T>(string path)
         {
             string json = File.ReadAllText(path);
+            Console.ForegroundColor = ConsoleColor.DarkMagenta;
+            Console.Write("Json загружен: ");
+            Console.ResetColor();
+            Console.WriteLine($"{Path.GetFullPath(path)}");
             return JsonSerializer.Deserialize<T>(json);
+        }
+
+
+        // Обработка ввода, если пользователь ввел значение не целочисленного типа, то вывести информацию об этом
+        static int ReadInputInteger(int startCom, int endCom)
+        {
+            while (true)
+            {
+                Console.Write("Введите число из меню, для выбора задания: ");
+                if (int.TryParse(Console.ReadLine(), out int input))
+                {
+                    if (input < startCom || input > endCom)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("Введите от {0} до {1}", startCom, endCom);
+                        Console.ResetColor();
+                    }
+                    else return input;
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Red;
+                    Console.WriteLine("Ошибка, необходимо целое число");
+                    Console.ResetColor();
+                    continue;
+                }
+            }
+        }
+
+        static int ReadInteger(string text)
+        {
+            Console.Write(text + " ");
+            int intValue;
+            while (!int.TryParse(Console.ReadLine(), out intValue))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("Введите целое число!");
+                Console.ResetColor();
+                Console.Write("\n" + text + " ");
+            }
+            //Console.WriteLine();
+            return intValue;
+        }
+
+        // Вывод содержимого routes
+        static void PrintRoutes(IEnumerable<Marsh> routes)
+        {
+            foreach (var r in routes) Console.WriteLine(r.Print());
         }
 
         static void Main(string[] args)
         {
-            int len = 3;
-            Marsh[] massiv = new Marsh[len];
-
-            for (int i = 0; i < len; i++)
+            while (true)
             {
-                Console.WriteLine("Введите начальную остановку:");
-                string start = Console.ReadLine();
-                Console.WriteLine("Введите конечную остановку:");
-                string end = Console.ReadLine();
-                Console.WriteLine("Введите номер маршрута:");
-                int.TryParse(Console.ReadLine(), out int number);
+                int LEN;
+                List<Marsh> massiv;
+                MarshArray routes;
+                Console.WriteLine("Введите число из меню, для выбора задания:");
+                Console.WriteLine("1. Работа с XML\n" 
+                    + "2. Работа с Json\n"
+                    + "3. Очистить консоль.\n"
+                    + "4. Завершить работу программы.");
+                int caseValue;
+                caseValue = ReadInputInteger(1, 4);
 
-                massiv[i] = new Marsh(start, end, number);
+                switch(caseValue)
+                {
+                    case 1: // часть 1 работа с XML
+                        LEN = ReadInteger("Введите количество маршрутов");
+                        massiv = Marsh.Create(LEN);
+                        routes = new MarshArray { Items = massiv };
+                        string xmlPath = "routes.xml";
+                        SaveToXml(routes, xmlPath);
+                        MarshArray loaded = LoadFromXml<MarshArray>(xmlPath);
+                        var sorted = loaded.Items.OrderBy(m => m.numberBus);
+                        Console.ForegroundColor = ConsoleColor.DarkMagenta;
+                        Console.WriteLine("Считано из XML:");
+                        Console.ResetColor();
+                        PrintRoutes(sorted);
+                        Marsh.FindMarsh(massiv);
+                        Console.WriteLine();
+                        break;
+
+                    case 2: // часть 2 работа с Json
+                        LEN = ReadInteger("Введите количество маршрутов");
+                        massiv = Marsh.Create(LEN);
+                        routes = new MarshArray { Items = massiv };                        
+                        string jsonPath = "routes.json";
+                        SaveToJson(massiv, jsonPath);
+                        Marsh[] json_loaded = LoadFromJson<Marsh[]>(jsonPath);
+                        Console.ForegroundColor= ConsoleColor.DarkMagenta;
+                        Console.WriteLine("Считано из JSON:");
+                        Console.ResetColor();
+                        PrintRoutes(json_loaded);
+                        Marsh.FindMarsh(massiv);
+                        Console.WriteLine();
+                        break;
+
+                    case 3:
+                        Console.Clear();
+                        break;
+
+                    case 4:
+                        return;
+                }
+
+
             }
-
-            // Заворачиваем в контейнер
-            MarshArray routes = new MarshArray { Items = massiv };
-
-            // Запись
-            string xmlPath = "routes.xml";
-            SaveToXml(routes, xmlPath);
-            Console.WriteLine("XML сохранён.");
-
-            // Чтение
-            MarshArray loaded = LoadFromXml<MarshArray>(xmlPath);
-            Console.WriteLine("Считано из XML:");
-
-            // Пример обработки — сортировка по номеру
-            var sorted = loaded.Items.OrderBy(m => m.number_bus);
-
-            foreach (var marsh in sorted)
-                Console.WriteLine(marsh.Print());
-            Console.ReadLine();
-
-            string jsonPath = "routes.json";
-
-            // запись
-            SaveToJson(massiv, jsonPath);
-            Console.WriteLine("JSON сохранён.");
-
-            // чтение
-            Marsh[] json_loaded = LoadFromJson<Marsh[]>(jsonPath);
-            Console.WriteLine("Считано из JSON:");
-
-            foreach (var marsh in json_loaded)
-                Console.WriteLine(marsh.Print());
         }
     }
 }

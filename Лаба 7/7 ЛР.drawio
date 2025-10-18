@@ -1,6 +1,6 @@
 <mxfile host="Electron" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/27.0.5 Chrome/134.0.6998.205 Electron/35.3.0 Safari/537.36" version="27.0.5" pages="3">
   <diagram name="Structure Date" id="C-R6MeY_LfuSAMPz4Hqz">
-    <mxGraphModel dx="2864" dy="2445" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="2505" dy="2220" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -116,7 +116,7 @@
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-64" value="Конец" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="887" y="970" width="120" height="50" as="geometry" />
         </mxCell>
-        <mxCell id="BSvYqzCFYlf40LKr-VJ8-69" value="Да" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF0606;" vertex="1" parent="1">
+        <mxCell id="BSvYqzCFYlf40LKr-VJ8-69" value="Нет" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF0606;" vertex="1" parent="1">
           <mxGeometry x="906.75" y="620" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-72" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BSvYqzCFYlf40LKr-VJ8-70" target="BSvYqzCFYlf40LKr-VJ8-71">
@@ -149,10 +149,13 @@
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-78" value="Количство дней соответствует невисокосному году" style="text;html=1;align=left;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="160" y="60" width="120" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="BSvYqzCFYlf40LKr-VJ8-82" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="BSvYqzCFYlf40LKr-VJ8-79">
+        <mxCell id="BSvYqzCFYlf40LKr-VJ8-82" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="BSvYqzCFYlf40LKr-VJ8-79" target="BSvYqzCFYlf40LKr-VJ8-88">
           <mxGeometry relative="1" as="geometry">
             <mxPoint x="90" y="260" as="targetPoint" />
           </mxGeometry>
+        </mxCell>
+        <mxCell id="BqP-11mj8V6xQt2laJaY-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="BSvYqzCFYlf40LKr-VJ8-79" target="BqP-11mj8V6xQt2laJaY-1">
+          <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-79" value="if (day &amp;gt; 31 или day &amp;lt; 1)" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-25" y="150" width="230" height="70" as="geometry" />
@@ -162,14 +165,6 @@
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-102" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="BSvYqzCFYlf40LKr-VJ8-86" target="BSvYqzCFYlf40LKr-VJ8-95">
           <mxGeometry relative="1" as="geometry" />
-        </mxCell>
-        <mxCell id="BSvYqzCFYlf40LKr-VJ8-120" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="BSvYqzCFYlf40LKr-VJ8-86" target="BSvYqzCFYlf40LKr-VJ8-116">
-          <mxGeometry relative="1" as="geometry">
-            <Array as="points">
-              <mxPoint x="410" y="385" />
-              <mxPoint x="410" y="880" />
-            </Array>
-          </mxGeometry>
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-86" value="if (month == 2)" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-25" y="350" width="230" height="70" as="geometry" />
@@ -195,7 +190,13 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-88" value="Вывод информации о неверном вводе дня" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
-          <mxGeometry y="260" width="180" height="60" as="geometry" />
+          <mxGeometry x="150" y="250" width="180" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="BqP-11mj8V6xQt2laJaY-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="BqP-11mj8V6xQt2laJaY-1" target="BSvYqzCFYlf40LKr-VJ8-86">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="BqP-11mj8V6xQt2laJaY-1" value="Вывод информации о неверном вводе дня" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
+          <mxGeometry x="-180" y="250" width="180" height="60" as="geometry" />
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-91" value="NextDay(29)" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
           <mxGeometry x="-540" y="495" width="120" height="50" as="geometry" />
@@ -206,53 +207,57 @@
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-104" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="BSvYqzCFYlf40LKr-VJ8-95" target="BSvYqzCFYlf40LKr-VJ8-103">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="-120" y="635" />
+              <mxPoint x="135" y="535" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-95" value="Проверка ключа в словаре метод ContainsKey(month)" style="rhombus;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-37.5" y="592.5" width="255" height="85" as="geometry" />
+          <mxGeometry x="217.5" y="492.5" width="255" height="85" as="geometry" />
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-118" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="BSvYqzCFYlf40LKr-VJ8-103" target="BSvYqzCFYlf40LKr-VJ8-116">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="-120" y="770" />
-              <mxPoint x="90" y="770" />
+              <mxPoint x="135" y="670" />
+              <mxPoint x="345" y="670" />
+              <mxPoint x="345" y="750" />
+              <mxPoint x="50" y="750" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-103" value="NextDay(monthDict[month])" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="-225" y="700" width="210" height="50" as="geometry" />
+          <mxGeometry x="30" y="585" width="210" height="50" as="geometry" />
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-117" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="BSvYqzCFYlf40LKr-VJ8-107" target="BSvYqzCFYlf40LKr-VJ8-116">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="270" y="770" />
-              <mxPoint x="90" y="770" />
+              <mxPoint x="525" y="670" />
+              <mxPoint x="345" y="670" />
+              <mxPoint x="345" y="750" />
+              <mxPoint x="50" y="750" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-107" value="Вывод информации о неверном значении месяца" style="shape=parallelogram;perimeter=parallelogramPerimeter;whiteSpace=wrap;html=1;fixedSize=1;" vertex="1" parent="1">
-          <mxGeometry x="160" y="695" width="220" height="60" as="geometry" />
+          <mxGeometry x="415" y="585" width="220" height="60" as="geometry" />
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-108" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.555;entryY=0.01;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="BSvYqzCFYlf40LKr-VJ8-95" target="BSvYqzCFYlf40LKr-VJ8-107">
           <mxGeometry relative="1" as="geometry">
             <Array as="points">
-              <mxPoint x="282" y="635" />
+              <mxPoint x="537" y="535" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-109" value="Нет" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF0606;" vertex="1" parent="1">
-          <mxGeometry x="220" y="610" width="60" height="30" as="geometry" />
+          <mxGeometry x="475" y="510" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-110" value="Да" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF0606;" vertex="1" parent="1">
           <mxGeometry x="-85" y="360" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-111" value="Да" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF0606;" vertex="1" parent="1">
-          <mxGeometry x="90" y="220" width="60" height="30" as="geometry" />
+          <mxGeometry x="270" y="220" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-112" value="Да" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF0606;" vertex="1" parent="1">
-          <mxGeometry x="-110" y="610" width="60" height="30" as="geometry" />
+          <mxGeometry x="145" y="510" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-113" value="Нет" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF0606;" vertex="1" parent="1">
           <mxGeometry x="-160" y="420" width="60" height="30" as="geometry" />
@@ -269,22 +274,27 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-116" value="Конец" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="30" y="850" width="120" height="60" as="geometry" />
+          <mxGeometry x="-10" y="850" width="120" height="60" as="geometry" />
         </mxCell>
-        <mxCell id="BSvYqzCFYlf40LKr-VJ8-119" value="" style="endArrow=none;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;startArrow=classic;startFill=1;" edge="1" parent="1" source="BSvYqzCFYlf40LKr-VJ8-116">
+        <mxCell id="BSvYqzCFYlf40LKr-VJ8-119" value="" style="endArrow=none;html=1;rounded=0;startArrow=classic;startFill=1;edgeStyle=orthogonalEdgeStyle;" edge="1" parent="1">
           <mxGeometry width="50" height="50" relative="1" as="geometry">
-            <mxPoint x="-340" y="340" as="sourcePoint" />
+            <mxPoint x="50" y="850" as="sourcePoint" />
             <mxPoint x="-300" y="560" as="targetPoint" />
             <Array as="points">
-              <mxPoint x="-300" y="880" />
+              <mxPoint x="50" y="750" />
+              <mxPoint x="-299" y="750" />
+              <mxPoint x="-299" y="560" />
             </Array>
           </mxGeometry>
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-121" value="Нет" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF0606;" vertex="1" parent="1">
-          <mxGeometry x="210" y="360" width="60" height="30" as="geometry" />
+          <mxGeometry x="355" y="450" width="60" height="30" as="geometry" />
         </mxCell>
         <mxCell id="BSvYqzCFYlf40LKr-VJ8-122" value="Метод Print" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
           <mxGeometry x="40" y="-80" width="100" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="BqP-11mj8V6xQt2laJaY-3" value="Нет" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#FF0606;" vertex="1" parent="1">
+          <mxGeometry x="-85" y="220" width="60" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
@@ -816,7 +826,7 @@
     </mxGraphModel>
   </diagram>
   <diagram id="3RbnhkNRnskaZs4h88b3" name="Страница — 3">
-    <mxGraphModel dx="1426" dy="893" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1783" dy="1116" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
